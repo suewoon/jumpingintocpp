@@ -1,0 +1,25 @@
+#include<iostream>
+#include<algorithm>
+
+using namespace std; 
+
+void print(const string &str)
+{
+  cout<<str;
+  cout<<endl;
+}
+
+int main()
+{
+  string str("(02)-5874-3847");
+  print_string(str);
+  
+  char chars[] = "()-";
+  for(unsigned int i = 0; i<strlen(chars); ++i){
+    str.erase(std::remove(str.begin(), str.end(), chars[i]), str.end());
+  }
+  print_string(str);
+  
+  return 0; 
+  
+}
