@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+#include <algorithm> //the algorithm library provides remove and remove_if algorithms
+
+using namespace std;
+
+bool is_odd(int i);
+{
+ return (i%2)!=0;
+}
+
+void print(const std::vector<int> &vec)
+{
+ for(const auto& i: vec){
+ cout<<i<<' ';}
+ cout<<endl; 
+}
+
+int main()
+{
+		vector<int> v;
+		for(int i =0; i<10; i++)
+		{
+			v.push_back(i);
+		}
+		print(v); //'0 1 2 3 4 5 6 7 8 9 '
+		
+		v.erase(remove(v.begin(),v.erase(),5),v.end()); //remove 5 out of vector 
+		print(v); //'0 1 2 3 4 6 7 8 9 '
+		
+		v.erase(remove(v.begin(),v.erase(),is_odd),v.end()); //remove odd number out of vector;
+		print(v);  //'0 2 4 6 8 '
+		
+		return 0; 
+
+
+
+}
