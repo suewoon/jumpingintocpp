@@ -1,2 +1,2 @@
 # jumpingintocpp
-c++ snippets and my solutions for 'jumping into c++(Alex Allain)' practice problems 
+c++ snippets including my solutions for 'jumping into c++(Alex Allain)' practice problems 
