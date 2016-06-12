@@ -1,0 +1,50 @@
+//
+//  main.cpp
+//  Practice Problem 14_2
+//
+//  Created by 류수운 on 5/10/16.
+//  Copyright © 2016 Suewoon Ryu. All rights reserved.
+//  3 dimensional matrix using pointer to pointer
+
+#include <iostream>
+using namespace std;
+
+int main(){
+    int l,w,h;
+    cout<<"enter a length"<<'\n';
+    cin>>l;
+    cout<<"enter a width"<<'\n';
+    cin>>w;
+    cout<<"enter a height"<<'\n';
+    cin>>h;
+    
+    cout<<"Length is:"<<l<<", Width is"<<w<<", Height is:"<<h<<'\n'<<endl;
+    
+    int ***p_p_p_mutitable;
+    
+    //x-axis dynamic memory allocation
+    p_p_p_mutitable = new int**[l];
+    
+    //y-axis
+    for (int i=0; i<l; i++) {
+         p_p_p_mutitable[i] = new int*[w];
+    }
+    
+    //z-axis
+    for (int i=0; i<l; i++) {
+        for (int j=0; j<l; j++) {
+            p_p_p_mutitable[i][j] = new int[h];
+        }
+    }
+    
+    for (int i=0; i<l; i++) {
+        for (int j=0; j<w; j++) {
+            for (int k=0; k<h; k++)
+            {
+            p_p_p_mutitable[i][j][k] = (i+1)*(j+1)*(k+1);
+            cout<< p_p_p_mutitable[i][j][k]<<',';
+            }
+        }cout<<'\n';
+    }cout<<'\n';
+    
+}
