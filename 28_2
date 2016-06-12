@@ -1,0 +1,47 @@
+//
+//  main.cpp
+//  Practice Problem 28_2
+//
+//  Created by 류수운 on 6/12/16.
+//  Copyright © 2016 Suewoon Ryu. All rights reserved.
+//  Dealing with command line argument
+
+#include <fstream>
+#include <cstdlib>
+#include <iostream> 
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+    if (argc !=2) {
+        cout<<"usage:"<<argv[0]<<"<filename>"<<endl;
+    }else{
+        ifstream the_file(argv[1]);
+        
+        if(! the_file.is_open())
+        {
+            cout<<"could not open"<<argv[1]<<endl;
+            
+            return 1;
+        }
+        
+        char x ;
+        
+        while(the_file.get(x)){
+            cout<< x;
+            //the_file.get(x) reads the next character from the file into x, and returns false if
+            //the end of file is hit or if an error occurs
+        }
+        
+    }
+    
+    
+    //atoi function = ascii to interger, need cstdlib header
+    //convert numeric command argument into number and prints it out 
+    /*
+     int val = atoi(argv[1]);
+     cout<< val * val
+     
+     */
+}
