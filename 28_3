@@ -1,0 +1,72 @@
+//
+//  main.cpp
+//  Project Problems 28_3
+//
+//  Created by 류수운 on 6/12/16.
+//  Copyright © 2016 Suewoon Ryu. All rights reserved.
+//  binary file i/o
+
+#include <iostream>
+#include <fstream>
+
+using namespace std ;
+
+class Student
+{
+private:
+    char name[20];
+    int mark;
+public:
+    void GetStudentData();
+    void ShowStudentData();
+};
+
+void Student::GetStudentData()
+{
+    cout<< "enter student name : "<<endl;
+    cin>>name;
+    cout<<"Enter Studnet mark : "<<endl;
+    cin>>mark;
+}
+
+void Student::ShowStudentData()
+{
+    cout<<"Student Details are :"<<endl;
+    cout<<"Name: "<<name<<"Mark: "<<mark<<endl ;
+}
+
+int main(int argc, char* argv[])
+{
+   char ans = 'y';
+    Student sobj;
+    
+    ofstream out ("student.bin", ios::app|ios::binary);
+    
+    if (out.is_open()) {
+        while (ans=='y') {
+            cout<<endl<<"Continue? ";
+            cin>>ans;
+            if (ans == 'y') {
+                sobj.GetStudentData();
+                out.write((char*)&sobj, sizeof(sobj)); //writing in to a file
+            }
+        }
+    }
+    
+    out.close();
+    
+    ifstream in("student.bin");
+    if(in.is_open()){
+        while (!in.eof()) {
+            in.read((char*) &sobj
+                    , sizeof(sobj)); //read file
+            if (!in.eof()) {
+                sobj.ShowStudentData(); //showing
+            }
+        }
+    }
+    
+    in.close();
+}
+
+
