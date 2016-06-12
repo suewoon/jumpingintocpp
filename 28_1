@@ -32,8 +32,6 @@ int main(){
     a_file.write(reinterpret_cast<char*>(&rec.score), sizeof(rec.score));
     int len = static_cast<int>(rec.name.length());
     a_file.write(reinterpret_cast<char*>(&len), sizeof(len));
-    //cant pass a pointer to a string bc we dont know the layout of a string object, it may contain
-    //pointers that would be written into the file
     a_file.write(rec.name.c_str(), len+1);
     
     PlayerRecord in_rec;
