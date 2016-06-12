@@ -1,0 +1,33 @@
+//
+//  main.cpp
+//  Practice Problem 16_5
+//
+//  Created by 류수운 on 6/13/16.
+//  Copyright © 2016 Suewoon Ryu. All rights reserved.
+//  the Tower of Hanoi
+
+#include <iostream>
+
+using namespace std;
+
+void move(int, int ,int, int );
+
+int main(){
+    int num;
+    cout<<"enter a number of disks : "<<endl;
+    cin>>num;
+    cout<<endl;
+    move(num,1,3,2);
+    system("PAUSE");
+    return 0;
+}
+
+
+void move(int count, int n1, int n3, int n2)
+{
+    if (count>0) {
+        move(count-1, n1,n2,n3);
+        cout<<"move disk number"<<count<<" from "<<n1<<" to "<<n3<<endl;
+        move(count-1, n2,n3,n1);
+    }
+}
