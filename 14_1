@@ -1,0 +1,47 @@
+//
+//  main.cpp
+//  Practice Problem 14_1
+//
+//  Created by 류수운 on 5/10/16.
+//  Copyright © 2016 Suewoon Ryu. All rights reserved.
+//
+
+#include <iostream>
+using namespace std;
+
+int main(){
+    
+    cout<<"enter a any integer greater than 0 "<<'\n';
+    int i;
+    cin>> i;
+    
+    //pointer to pointer - 2d matrix
+    int **p_p_multitable;
+    
+    //for each row
+    p_p_multitable = new int*[i];
+    
+    //for each column
+    for (int j = 0; j<i; j++) {
+        p_p_multitable[j] = new int[i];
+    }
+    
+    
+    for (int k = 0 ; k<i; k++) {
+        for (int j = 0; j<i; j++) {
+            p_p_multitable[k][j]  = (k+1)*(j+1); 
+             cout<<p_p_multitable[k][j]<<',';
+        }cout<<'\n';
+    }
+    
+    //delete column first which created later
+    for (int j=0 ; j< i ; j++) {
+        delete [] p_p_multitable[j];
+    }
+    
+    //delete row 
+    delete [] p_p_multitable;
+
+    
+    
+}
